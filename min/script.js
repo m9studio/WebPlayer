@@ -90,6 +90,18 @@ function onLoad(){
     trackList[trackI].click();
     track.Audio.volume = 0.1;
     //track0.Audio.playbackRate = 0 - 16; //скорость
+
+
+
+
+    
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+        buttonNext.click();
+    });
+    
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+        buttonBack.click();
+    });
 }
 
 
@@ -180,7 +192,7 @@ class TrackItem extends TrackNode{
     __click(item){
         item.Header.TitleName.innerHTML = item.JSON.name;
         item.Header.TitleArtist.innerHTML = item.JSON.artist;
-        item.Header.TitleTime.innerHTML = 0;
+        item.Header.TitleTime.innerHTML = "0:00";
 
         item.Header.Now.TitleTime.innerHTML = item.Header.Now.JSON.time;
         item.Header.Now.Line.style.display = "none";
@@ -189,23 +201,42 @@ class TrackItem extends TrackNode{
         item.Header.LineNow.style.width = "";
 
         item.Header.Now = item;
-        item.Header.Now.TitleTime.innerHTML = 0;
+        item.Header.Now.TitleTime.innerHTML = "0:00";
         item.Header.Now.Line.style.display = "";
 
 
         
         item.Header.Audio.ontimeupdate = function(){
             let i = ((item.Header.Audio.currentTime / item.Header.Audio.duration) * 100) + "%";
+            item.Header.LineNow.style.width = i;
+            item.LineNow.style.width = i;
+
+
             let t = item.Header.Audio.currentTime;
             t = t - t % 1;
             let mt = (t % 60);
             t = ((t - mt) / 60) + ":" + (mt < 10 ? "0" + mt : mt);
-
-            item.Header.LineNow.style.width = i;
             item.Header.TitleTime.innerHTML = t;
-            item.LineNow.style.width = i;
             item.TitleTime.innerHTML = t;
+
+            let bufferedEnd = item.Header.Audio.buffered.end(item.Header.Audio.buffered.length - 1);
+            let bufferedPercent = (bufferedEnd / item.Header.Audio.duration) * 100 + "%";
+            item.Header.LineLoad.style.width = bufferedPercent;
+            item.LineLoad.style.width = bufferedPercent;
+
         };
+
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: item.JSON.name,
+            artist: item.JSON.artist,
+            /*album: "Название альбома",
+            artwork: [
+                { src: "cover-96x96.jpg", sizes: "96x96", type: "image/jpeg" },
+                { src: "cover-128x128.jpg", sizes: "128x128", type: "image/jpeg" },
+                { src: "cover-256x256.jpg", sizes: "256x256", type: "image/jpeg" }
+            ]*/
+
+        })
     }
 }
 
