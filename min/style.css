@@ -1,0 +1,151 @@
+.icon-next{mask: url(icon/next.svg);}
+.icon-back{mask: url(icon/back.svg);}
+.icon-play{mask: url(icon/play.svg);}
+.icon-repeat{mask: url(icon/repeat.svg);}
+.icon-pause{mask: url(icon/pause.svg);}
+
+
+
+.icon-next, .icon-back, .icon-play, .icon-repeat, .icon-pause{
+    width: 20px;
+    height: 20px;
+}
+
+.icon-next, .icon-back, .icon-play, .icon-repeat, .icon-pause{
+	mask-position: center center;
+	mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: black;
+}
+
+.header-button{
+    cursor: pointer;
+}
+.header-button-play{
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.list{
+    position: absolute;
+    top: 70px;
+    left: 78px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.track{
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 350px;
+    align-items: center;
+}
+
+.track-icon{
+    background-image: url(icon/track.svg);
+	background-position: center center;
+	background-repeat: no-repeat;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+}
+
+.track-title, .track-line{
+    width: calc(100% - 50px);
+    position: absolute;
+    left: 50px;
+}
+.track-title{
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+.track-line{
+    bottom: 0;
+    height: 4px;
+    background: #ccc;
+    cursor: pointer;
+}
+
+
+
+.track-title-name{
+    margin-right: 15px;
+}
+.track-title-artist{
+    cursor: pointer;
+}
+.track-title-artist:hover{
+    text-decoration-line: underline;
+}
+.track-title-time{
+    position: absolute;
+    right: 0;
+}
+
+.track-line-load, .track-line-now{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.track-line-load{
+    background: #999;
+    width: 0px;
+}
+.track-line-now{
+    background: #f66;
+    width: 0px;
+}
+
+
+
+.track-line:hover .track-line-circle{
+    display: block;
+}
+.track-line:active .track-line-circle{
+    display: block;
+}
+.track-line-circle{
+    display: none;
+    position: absolute;
+    right: -4px;
+    top: -2px;
+    background: #f66;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}

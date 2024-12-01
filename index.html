@@ -1,59 +1,10 @@
-﻿<head>
-<style>
-.audio_player_block{
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
-    height:56px;
-    width:800px;
-}
-
-
-
-</style>
-<link rel="stylesheet" type="text/css" href="style/control.css">
-<link rel="stylesheet" type="text/css" href="style/track.css">
-</head>
-<body>
-
-<div class="audio_player_block">
-    <div class="audio_player_control">
-        <div class="audio_player_button_play audio_player_button_background">
-            <div id="audio_player_play" class="audio_player_button audio_player_play"></div>
-        </div>
-        <div class="audio_player_button_prev audio_player_button_background">
-            <div id="audio_player_prev" class="audio_player_button audio_player_prev"></div>
-        </div>
-        <div class="audio_player_button_next audio_player_button_background">
-            <div id="audio_player_next" class="audio_player_button audio_player_next"></div>
-        </div>
-    </div>
-    <div class="audio_player_track">
-        <div class="audio_player_text">
-           <div id="audio_player_repet_off" class="audio_player_icon">
-               <div id="audio_player_repet_on" class="audio_player_repet" style="display:none"></div>
-           </div>
-           <div class="audio_player_info">
-              <div class="audio_player_info_title" id="in1"></div>
-              <a href="index.html?a=1&b=2" class="audio_player_info_artist" id="in2"></a>
-           </div>
-        </div>
-        <div id="audio_player_track_slider" class="audio_player_track_slider">
-            <div id="audio_player_track_slider1" class="audio_player_track_slider1" style="width:0%;"></div>
-            <div id="audio_player_track_slider2" class="audio_player_track_slider2" style="width:0%;"></div>
-            <div id="audio_player_track_slider3" class="audio_player_track_slider3" style="display:none;left:calc(0% - 4px);"></div>
-        </div>
-        <div id="audio_player_value_text" class="audio_player_value_text"></div>
-        <div id="audio_player_track_text" class="audio_player_track_text"></div>
-    </div>
-<div id="audio_player_volume_slider" class="audio_player_volume_slider">
-            <div id="audio_player_volume_slider1" class="audio_player_volume_slider1" style="width: 50%;"></div>
-            <div id="audio_player_volume_slider2" class="audio_player_volume_slider2" style="left: calc(50% - 4px); display: none;"></div>
-        </div>
-</div>
-
-
-<audio id="audio_player"></audio>
-
-</body>
-<script src="script/audio.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>music player</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="min/style.css">
+        <script charset="UTF-8" src="min/script.js"></script>
+    </head>
+    <body onload="onLoad()"></body>
+</html>
