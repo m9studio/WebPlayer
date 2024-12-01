@@ -1,99 +1,56 @@
-﻿<style>
-.audio_controls{}
-.m0{
-width:400px;
-height:2px;
-background:blue;
+﻿<head>
+<style>
+.audio_player_block{
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    height:56px;
+    width:800px;
 }
-.m1{
-width:0%;
-height:100%;
-background:red;
-}
-.m2{}
-.m3{
-width:50px; 
-height:50px; 
-background:url(music.png) -50px -50px;
-}
-.m4{
-width:50px; 
-height:50px; 
-background:url(music.png) -200px 0px;
-}
+
 
 
 </style>
+<link rel="stylesheet" type="text/css" href="control.css">
+<link rel="stylesheet" type="text/css" href="track.css">
+</head>
 <body>
-<audio src='1.mp3' id='music'></audio>
 
-<div class='audio_controls'>
-<div id='m3' class='m3' onclick='music_sp()'></div>
-
-<div class='m0' id='m0'><div class='m1' id='m1'></div></div>
-<div id='m2' class='m2'></div>
-
-<div id='m4' class='m4'></div>
-<button onclick='music_valume(0.25)'>+</button>
-<button onclick='music_valume(-0.25)'>-</button>
-
+<div class="audio_player_block">
+    <div class="audio_player_control">
+        <div class="audio_player_button_play audio_player_button_background">
+            <div id="b0" class="audio_player_button audio_player_play"></div>
+        </div>
+        <div class="audio_player_button_prev audio_player_button_background">
+            <div id="b1" class="audio_player_button audio_player_prev"></div>
+        </div>
+        <div class="audio_player_button_next audio_player_button_background">
+            <div id="b2" class="audio_player_button audio_player_next"></div>
+        </div>
+    </div>
+    <div class="audio_player_track">
+        <div class="audio_player_text">
+           <div class="audio_player_icon">
+           </div>
+           <div class="audio_player_info">
+              <div class="audio_player_info_title">тест 1</div>
+              <a href="index.html?a=1&b=2" class="audio_player_info_artist">тест 2</a>
+           </div>
+        </div>
+        <div id="v0" class="audio_player_volume_slider">
+            <div id="v1" class="audio_player_volume_slider1" style="width:0%"></div>
+            <div id="v2" class="audio_player_volume_slider2" style="display:none;left:calc(0% - 4px);"></div>
+        </div>
+        <div id="t0" class="audio_player_track_slider">
+            <div id="t1" class="audio_player_track_slider1" style="width:0%;"></div>
+            <div id="t2" class="audio_player_track_slider2" style="width:0%;"></div>
+            <div id="t3" class="audio_player_track_slider3" style="display:none;left:calc(0% - 4px);"></div>
+        </div>
+    </div>
 </div>
 
 
-<br><br>
-<button onclick='audio_play(1)'>1</button>
-<button onclick='audio_play(2)'>2</button>
-<button onclick='audio_play(3)'>3</button>
-<button onclick='audio_play(4)'>4</button>
-<button onclick='audio_play(5)'>5</button>
-<button onclick='audio_play(6)'>6</button>
-<button onclick='audio_play(7)'>7</button>
-<button onclick='audio_play(8)'>8</button>
+<audio id="audio_player"></audio>
 
 </body>
-<script>
-
-
-
-
-function audio_play(a){
-music.src=a+'.mp3';
-music.play();
-
-}
-
-
-
-var timer=setInterval(function(){
-var v1=music.duration;
-var v2=music.currentTime;
-
-m1.style.width=((v2/v1)*100)+'%';
-m2.innerHTML=Math.floor((v1-v2)/60)+':'+Math.floor((v1-v2)%60);
-},250)
-
-
-
-
-function music_valume(a){
-if(((music.volume==0)&&(a<0))||((music.volume==1)&&(a>0))){}else{
-music.volume=music.volume+a;
-}
-m4.style='width:50px; height:50px; background:url(music.png) -'+music.volume*200+'px 0px;';
-}
-
-function music_sp(){
-if(music.paused==true){
-music.play();
-m3.style='width:50px; height:50px; background:url(music.png) -0px -50px;';
-}else{
-music.pause();
-m3.style='width:50px; height:50px; background:url(music.png) -50px -50px;';
-}}
-
-function music_control(a){
-music.currentTime=(music.duration*a)/100;
-}
-
-
-</script>
+<script src="audio.js"></script>
